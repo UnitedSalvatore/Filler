@@ -3,7 +3,7 @@ NAME = ypikul.filler
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-FILENAMES = 
+FILENAMES = main.c 
 
 SOURCES = $(addprefix ./, $(FILENAMES))
 OBJECTS = $(addprefix ./obj/, $(FILENAMES:.c=.o))
@@ -15,8 +15,7 @@ FLAGS += -I./libft/include/
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS) $(LIBFT)
-	ranlib $(NAME)
+	$(CC) -o $@ $(FLAGS) $^
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)/
@@ -36,4 +35,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+one:
+	./resources/filler_vm -f resources/maps/map00 -p1 ypikul.filler -p2 resources/players/champely.filler
+
+two:
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/champely.filler -p2 ypikul.filler
+
+.PHONY: all clean fclean re one two
