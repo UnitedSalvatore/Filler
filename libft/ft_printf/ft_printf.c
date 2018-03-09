@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 00:03:07 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/05 15:34:52 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/11 18:39:54 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@ static size_t		ft_vprintf(const char *format, va_list *arg, t_arg *spec)
 		else
 			ft_add_to_buf(*format++, &spec->buffer);
 	}
-	write(STDOUT_FILENO, spec->buffer.buf, spec->buffer.size);
-	spec->buffer.written += spec->buffer.size;
-	spec->buffer.size = 0;
+	if (spec->buffer.size != 0)
+	{
+		write(spec->buffer.fd, spec->buffer.buf, spec->buffer.size);
+		spec->buffer.written += spec->buffer.size;
+		spec->buffer.size = 0;
+	}
 	return (spec->buffer.written);
 }
 
@@ -73,7 +76,24 @@ int					ft_printf(const char *format, ...)
 	if (format == NULL || BUFF_SIZE < 1)
 		return (-1);
 	va_start(arg, format);
-	ft_memset(&spec, 0, sizeof(spec));
+	ft_memset(&spec.buffer, 0, sizeof(spec.buffer));
+	spec.buffer.fd = STDOUT_FILENO;
+	done = (int)ft_vprintf(format, &arg, &spec);
+	va_end(arg);
+	return (done);
+}
+
+int					ft_dprintf(int fd, const char *format, ...)
+{
+	va_list	arg;
+	t_arg	spec;
+	int		done;
+
+	if (format == NULL || BUFF_SIZE < 1)
+		return (-1);
+	va_start(arg, format);
+	ft_memset(&spec.buffer, 0, sizeof(spec.buffer));
+	spec.buffer.fd = fd;
 	done = (int)ft_vprintf(format, &arg, &spec);
 	va_end(arg);
 	return (done);

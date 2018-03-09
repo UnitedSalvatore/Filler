@@ -1,4 +1,4 @@
-NAME = ypikul.filler
+NAME = resources/players/ypikul.filler
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -35,10 +35,10 @@ fclean: clean
 
 re: fclean all
 
-one:
-	./resources/filler_vm -f resources/maps/map00 -p1 ypikul.filler -p2 resources/players/champely.filler
+one: all
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/ypikul.filler -p2 resources/players/champely.filler
 
-two:
-	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/champely.filler -p2 ypikul.filler
+two: all 
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/champely.filler -p2 /resources/players/ypikul.filler
 
 .PHONY: all clean fclean re one two

@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 04:02:14 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/05 15:33:31 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/11 18:27:52 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ struct				s_buffer
 	char			buf[BUFF_SIZE];
 	size_t			size;
 	size_t			written;
+	int				fd;
 };
 
 typedef struct		s_num
