@@ -62,3 +62,4 @@ ft_count_words.c
 ft_wordlen.c
 ft_memjoin.c
 ft_itoa_base.c
+ft_splitdel.c

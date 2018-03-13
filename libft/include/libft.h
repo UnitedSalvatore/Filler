@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 18:46:54 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/01 05:02:43 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:43:54 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ size_t				ft_wordlen(char const *str);
 int					ft_is_whitespace(const char c);
 void				*ft_memjoin(void const *ptr1, size_t n1, \
 	void const *ptr2, size_t n2);
-char				*ft_itoa_base(int n, const int base);
-char				*ft_uitoa_base(unsigned int n, const int base);
+char				*ft_itoa_base(int n, const unsigned int base);
+char				*ft_uitoa_base(unsigned int n, const unsigned int base);
+void				ft_splitdel(char ***as);
 
 #endif

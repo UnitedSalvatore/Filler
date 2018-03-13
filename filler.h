@@ -1,6 +1,9 @@
 #ifndef FILLER_H
 # define FILLER_H
 
+# define PLAYER_1 1
+# define PLAYER_2 2
+
 typedef struct		s_token
 {
 	char			**map;	
@@ -18,5 +21,7 @@ typedef struct		s_map
 	unsigned int	size;
 	t_token			token;
 }					t_map;
+
+int					parse(t_map *map);
 
 #endif

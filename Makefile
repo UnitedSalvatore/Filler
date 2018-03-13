@@ -5,12 +5,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 FILENAMES = main.c 
 
-SOURCES = $(addprefix ./, $(FILENAMES))
+SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(addprefix ./obj/, $(FILENAMES:.c=.o))
 
 CC = gcc
 FLAGS ?= -Wall -Wextra -Werror
-FLAGS += -I./libft/include/
+FLAGS += -I./libft/include/ -I./include/
 
 all: $(NAME)
 
@@ -29,6 +29,7 @@ obj/%.o: ./%.c | obj
 clean:
 	rm -rf obj/
 	make -C $(LIBFT_DIR)/ fclean
+	rm -f filler.trace
 
 fclean: clean
 	rm -f $(NAME)
@@ -36,9 +37,12 @@ fclean: clean
 re: fclean all
 
 one: all
-	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/ypikul.filler -p2 resources/players/champely.filler
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/ypikul.filler -p2 resources/players/superjeannot.filler
 
-two: all 
-	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/champely.filler -p2 /resources/players/ypikul.filler
+two: all
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 resources/players/ypikul.filler
+
+look: all
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 resources/players/superjeannot.filler
 
 .PHONY: all clean fclean re one two

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ypikul <ypikul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 16:25:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/02/16 21:05:42 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:38:51 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
-static size_t	int_len(int n, const int base)
+static size_t	int_len(int n, const unsigned int base)
 {
 	size_t i;
 
@@ -25,7 +24,7 @@ static size_t	int_len(int n, const int base)
 	return (i);
 }
 
-static size_t	uint_len(unsigned int n, const int base)
+static size_t	uint_len(unsigned int n, const unsigned int base)
 {
 	size_t i;
 
@@ -35,7 +34,7 @@ static size_t	uint_len(unsigned int n, const int base)
 	return (i);
 }
 
-char			*ft_itoa_base(int n, const int base)
+char			*ft_itoa_base(int n, const unsigned int base)
 {
 	size_t		len;
 	char		*str;
@@ -64,7 +63,7 @@ char			*ft_itoa_base(int n, const int base)
 	return (str);
 }
 
-char			*ft_uitoa_base(unsigned int n, const int base)
+char			*ft_uitoa_base(unsigned int n, const unsigned int base)
 {
 	size_t				len;
 	char				*str;
