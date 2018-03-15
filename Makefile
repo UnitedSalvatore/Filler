@@ -3,13 +3,15 @@ NAME = resources/players/ypikul.filler
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-FILENAMES = main.c 
+FILENAMES = main.c \
+			parse_map.c \
+			parse_token.c
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(addprefix ./obj/, $(FILENAMES:.c=.o))
 
 CC = gcc
-FLAGS ?= -Wall -Wextra -Werror
+FLAGS ?= -g -Wall -Wextra -Werror
 FLAGS += -I./libft/include/ -I./include/
 
 all: $(NAME)
