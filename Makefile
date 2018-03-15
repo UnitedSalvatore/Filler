@@ -4,8 +4,8 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 FILENAMES = main.c \
-			parse_map.c \
-			parse_token.c
+			parse.c \
+			validate.c
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(addprefix ./obj/, $(FILENAMES:.c=.o))

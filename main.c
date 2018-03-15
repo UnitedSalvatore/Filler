@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:42:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/15 14:56:32 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/15 20:22:56 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static int	parse_player(t_map *map)
 {
 	char	*str;
 
-	str = NULL;
-	map->player = 0;
 	if (ft_getline(STDIN_FILENO, &str) < 1)
 		return (1);
 	if (ft_strstr(str, " p1 "))
@@ -29,25 +27,35 @@ static int	parse_player(t_map *map)
 	else if (ft_strstr(str, " p2 "))
 		map->player = PLAYER_2;
 	ft_strdel(&str);
-	return (map->player ? 0 : 1);
+	map->enemy = (map->player == PLAYER_2) ? PLAYER_1 : PLAYER_2;
+	map->parse = parse;
+	map->validate = validate;
+	return (0);
 }
 
 int		main(void)
 {
 	t_map	map;
 
-	if (parse_player(&map))
-		ft_dprintf(2, "Error\n");
-	else
-		ft_dprintf(2, "OK\n");
-	if (parse_map(&map))
-		ft_dprintf(2, "Error\n");
-	else
-		ft_dprintf(2, "OK\n");
-	if (parse_token(&map.token))
-		ft_dprintf(2, "Error\n");
-	else
-		ft_dprintf(2, "OK\n");
+	parse_player(&map);
+	map.parse(&map);
+	map.validate(&map);
+	// if (parse_token(&map.token))
+	// 	ft_dprintf(2, "Error\n");
+	// else
+	// 	ft_dprintf(2, "OK\n");
+	// if (validate_map(&map))
+	// 	ft_dprintf(2, "Error\n");
+	// else
+	// 	ft_dprintf(2, "OK\n");
+	// if (validate_token(&map))
+	// 	ft_dprintf(2, "Error\n");
+	// else
+	// 	ft_dprintf(2, "OK\n");
+	// while (*(map.map))
+	// 	ft_putendl_fd((*(map.map)++), 2);
+	// while (*(map.token.map))
+	// 	ft_putendl_fd((*(map.token.map)++), 2);
 	return (0);
 }
 

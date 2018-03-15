@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:02:18 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/15 17:39:18 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/15 20:23:11 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,33 @@
 # define PLAYER_1 'O'
 # define PLAYER_2 'X'
 
-typedef struct		s_token
+typedef struct s_map	t_map;
+typedef struct s_token	t_token;
+
+struct				s_token
 {
-	char			**map;	
+	char			**map;
 	int				size_x;
 	int				size_y;
 	unsigned int	size;
-}					t_token;
+};
 
-typedef struct		s_map
+struct				s_map
 {
 	char			**map;
 	unsigned char	player;
+	unsigned char	enemy;
 	int				size_x;
 	int				size_y;
 	unsigned int	size;
 	t_token			token;
-}					t_map;
+	\
+	void			(*parse)(t_map *map);
+	void			(*validate)(t_map *map);
 
-int					parse_map(t_map *map);
-int					parse_token(t_token *token);
+};
+
+void				parse(t_map *map);
+void				validate(t_map *map);
 
 #endif
