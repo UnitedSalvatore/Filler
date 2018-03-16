@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:02:18 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/15 20:23:11 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/16 20:16:04 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ struct				s_token
 	char			**map;
 	int				size_x;
 	int				size_y;
-	unsigned int	size;
 };
 
 struct				s_map
@@ -34,15 +33,19 @@ struct				s_map
 	unsigned char	enemy;
 	int				size_x;
 	int				size_y;
-	unsigned int	size;
+	\
+	int				finish_x;
+	int				finish_y;
+	int				len;
+	\
 	t_token			token;
 	\
 	void			(*parse)(t_map *map);
 	void			(*validate)(t_map *map);
-
+	void			(*set_coordinates)(t_map *map);
 };
 
 void				parse(t_map *map);
 void				validate(t_map *map);
-
+void				set_coordinates(t_map *map);
 #endif

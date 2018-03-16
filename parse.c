@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 15:30:27 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/15 20:09:45 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/16 19:43:45 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	parse_map(t_map *map)
 	i = 0;
 	ft_getline(STDIN_FILENO, &str);
 	ft_strdel(&str);
-	map->map = malloc(sizeof(char *) * map->size_y);
+	map->map = malloc(sizeof(char *) * (map->size_y + 1));
 	while (i < map->size_y)
 	{
 		ft_getline(STDIN_FILENO, &str);

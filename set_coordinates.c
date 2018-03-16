@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   set_coordinates.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/15 17:43:23 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/16 19:30:38 by ypikul           ###   ########.fr       */
+/*   Created: 2018/03/16 16:52:13 by ypikul            #+#    #+#             */
+/*   Updated: 2018/03/16 20:22:19 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
-#include "libft.h"
-
-void		validate(t_map *map)
+static unsigned int	insert_token(t_map *map, int mx, int my);
 {
-	char	**chart;
-	char	*line;
+	unsigned int	count;
+	int tx;
+	int ty;
 
-	chart = map->map;
-	while (*chart)
+	ty = 0;
+	while ()
 	{
-		line = *chart;
-		while (*line)
+		tx = 0;
+	}
+}
+
+void				set_coordinates(t_map *map)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y <= map->size_y - map->token.size_y)
+	{
+		x = 0;
+		while (x <= map->size_x - map->token.size_x)
 		{
-			if (*line == ft_tolower(PLAYER_1) || *line == ft_tolower(PLAYER_2))
-				*line = ft_toupper(*line);
-			++line;
+			if (insert_token(map, ))
 		}
-		++chart;
+		++y;
 	}
 }
