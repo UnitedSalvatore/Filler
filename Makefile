@@ -5,7 +5,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 FILENAMES = main.c \
 			parse.c \
-			validate.c
+			set_coordinates.c
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(addprefix ./obj/, $(FILENAMES:.c=.o))
@@ -44,7 +44,13 @@ one: all
 two: all
 	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 resources/players/ypikul.filler
 
+ones: all
+	./resources/filler_vm -f resources/maps/map03 -p1 resources/players/ypikul.filler -p2 resources/players/superjeannot.filler
+
+twos: all
+	./resources/filler_vm -f resources/maps/map03 -p1 resources/players/abanlin.filler -p2 resources/players/ypikul.filler
+
 look: all
 	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 resources/players/superjeannot.filler
 
-.PHONY: all clean fclean re one two
+.PHONY: all clean fclean re one two ones twos

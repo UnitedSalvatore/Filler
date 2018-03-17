@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:42:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/16 19:41:28 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/17 19:42:38 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@
 #include "libft.h"
 #include "filler.h"
 
+static void	validate(t_map *map)
+{
+	char	**chart;
+	char	*line;
+
+	chart = map->map;
+	while (*chart)
+	{
+		line = *chart;
+		while (*line)
+		{
+			if (*line == ft_tolower(PLAYER_1) || *line == ft_tolower(PLAYER_2))
+				*line = ft_toupper(*line);
+			++line;
+		}
+		++chart;
+	}
+}
+
 static void	parse_player(t_map *map)
 {
 	char	*str;
@@ -23,14 +42,13 @@ static void	parse_player(t_map *map)
 	ft_getline(STDIN_FILENO, &str);
 	if (ft_strstr(str, " p1 "))
 		map->player = PLAYER_1;
-	else if (ft_strstr(str, " p2 "))
+	else
 		map->player = PLAYER_2;
 	ft_strdel(&str);
 	map->enemy = (map->player == PLAYER_2) ? PLAYER_1 : PLAYER_2;
-	map->
 	map->parse = parse;
 	map->validate = validate;
-	return (0);
+	map->set_coordinates = set_coordinates;
 }
 
 int		main(void)
@@ -41,6 +59,13 @@ int		main(void)
 	map.parse(&map);
 	map.validate(&map);
 	map.set_coordinates(&map);
+	ft_printf("MAP");
+	while (*(map.map))
+		ft_printf("%s\n", *(map.map)++);
+	ft_printf("TOKEN");
+	while (*(map.map.token))
+		ft_printf("%s\n", *(map.map.token)++);
+	ft_printf("%d %d\n", map.finish_y, map.finish_x);
 	return (0);
 }
 

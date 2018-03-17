@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 15:30:27 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/16 19:43:45 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/17 19:07:10 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "filler.h"
 #include "ft_getline.h"
 #include "libft.h"
+//
+#include "ft_printf.h"
 
 static void	parse_token(t_token *token)
 {
