@@ -5,7 +5,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 FILENAMES = main.c \
 			parse.c \
-			set_coordinates.c
+			set_coordinates.c \
+			crop_token.c
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(addprefix ./obj/, $(FILENAMES:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:02:18 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/17 18:27:58 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/18 19:37:21 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ typedef struct s_token	t_token;
 
 struct				s_token
 {
+	char			**raw_map;
 	char			**map;
+	char			**kostul;
 	int				size_x;
 	int				size_y;
 };
@@ -40,13 +42,15 @@ struct				s_map
 	\
 	t_token			token;
 	\
-	void			(*parse)(t_map *map);
+	void			(*parse)(t_map *map, char *str);
 	void			(*validate)(t_map *map);
 	void			(*set_coordinates)(t_map *map);
-	void			(*print_coordinates)(t_map *map);
+	void			(*die)(t_map *map);
+	void			(*crop_token)(t_token *token);
 };
 
-void				parse(t_map *map);
+void				parse(t_map *map, char *str);
 void				set_coordinates(t_map *map);
+void				crop_token(t_token *token);
 
 #endif

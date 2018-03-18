@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:42:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/17 19:42:38 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/18 20:45:31 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 #include "ft_getline.h"
 #include "libft.h"
 #include "filler.h"
+
+//
+#include <fcntl.h>
+
+static void	die(t_map *map)
+{
+	ft_splitdel(&map->map);
+	ft_splitdel(&map->token.raw_map);
+	ft_memdel((void **)&map->token.kostul);
+}
 
 static void	validate(t_map *map)
 {
@@ -48,24 +58,29 @@ static void	parse_player(t_map *map)
 	map->enemy = (map->player == PLAYER_2) ? PLAYER_1 : PLAYER_2;
 	map->parse = parse;
 	map->validate = validate;
+	map->crop_token = crop_token;
 	map->set_coordinates = set_coordinates;
+	map->die = die;
 }
 
 int		main(void)
 {
 	t_map	map;
+	char	*str;
 
+	//
+	open("test", O_RDONLY);
+	//
 	parse_player(&map);
-	map.parse(&map);
-	map.validate(&map);
-	map.set_coordinates(&map);
-	ft_printf("MAP");
-	while (*(map.map))
-		ft_printf("%s\n", *(map.map)++);
-	ft_printf("TOKEN");
-	while (*(map.map.token))
-		ft_printf("%s\n", *(map.map.token)++);
-	ft_printf("%d %d\n", map.finish_y, map.finish_x);
+	while (ft_getline(STDIN_FILENO, &str) > 0)
+	{
+		map.parse(&map, str);
+		map.validate(&map);
+		map.crop_token(&map.token);
+		map.set_coordinates(&map);
+		map.die(&map);
+		ft_printf("%d %d\n", map.finish_y, map.finish_x);
+	}
 	return (0);
 }
 

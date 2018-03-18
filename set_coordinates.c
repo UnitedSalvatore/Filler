@@ -6,12 +6,10 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 16:52:13 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/17 19:34:40 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/18 20:28:54 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-//
 #include <limits.h>
 #include "filler.h"
 
@@ -48,10 +46,10 @@ static void			count_len(t_map *map, int mx, int my)
 						if (map->token.map[ty][tx] == '*')
 						{
 							len = ft_abs(my2 - (my + ty)) + ft_abs(mx2 - (mx + tx));
-							if (len <= map->len)
+							if (len < map->len)
 							{
-								map->finish_x = mx + tx;
-								map->finish_y = my + ty;
+								map->finish_x = mx;
+								map->finish_y = my;
 								map->len = len;
 							}
 						}
@@ -65,8 +63,8 @@ static void			count_len(t_map *map, int mx, int my)
 static unsigned int	check_position(t_map *map, int mx, int my)
 {
 	unsigned int	count;
-	int tx;
-	int ty;
+	int				tx;
+	int				ty;
 
 	count = 0;
 	ty = 0;
