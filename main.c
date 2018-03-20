@@ -6,14 +6,14 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:42:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/20 20:28:26 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 20:42:03 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "ft_printf.h"
-#include "ft_getline.h"
-#include "libft.h"
+#include "libft/include/ft_printf.h"
+#include "libft/include/ft_getline.h"
+#include "libft/include/libft.h"
 #include "filler.h"
 
 static void	die(t_map *map)

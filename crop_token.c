@@ -6,14 +6,14 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 17:24:04 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/20 13:15:36 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 20:43:07 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <string.h>
 #include "filler.h"
-#include "libft.h"
+#include "libft/include/libft.h"
 
 static void	crop_x_l(t_token *token)
 {

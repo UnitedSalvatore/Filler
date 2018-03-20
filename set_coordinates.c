@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 16:52:13 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/18 20:28:54 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 20:40:07 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,15 @@ static void			count_len(t_map *map, int mx, int my)
 	int				my2;
 
 	my2 = -1;
-	while (++my2 < map->size_y)
-	{
-		mx2 = -1;
+	while ((mx2 = -1) == -1 && ++my2 < map->size_y)
 		while (++mx2 < map->size_x)
-		{
-			if (map->map[my2][mx2] == map->enemy)
-			{
-				ty = -1;
-				while (++ty < map->token.size_y)
-				{
-					tx = -1;
+			if (map->map[my2][mx2] == map->enemy && (ty = -1) == -1)
+				while ((tx = -1) == -1 && ++ty < map->token.size_y)
 					while (++tx < map->token.size_x)
-					{
 						if (map->token.map[ty][tx] == '*')
 						{
-							len = ft_abs(my2 - (my + ty)) + ft_abs(mx2 - (mx + tx));
+							len = ft_abs(my2 - (my + ty)) + \
+								ft_abs(mx2 - (mx + tx));
 							if (len < map->len)
 							{
 								map->finish_x = mx;
@@ -53,11 +46,6 @@ static void			count_len(t_map *map, int mx, int my)
 								map->len = len;
 							}
 						}
-					}
-				}
-			}
-		}
-	}
 }
 
 static unsigned int	check_position(t_map *map, int mx, int my)

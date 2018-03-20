@@ -6,15 +6,15 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 15:30:27 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/20 13:16:32 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 20:42:52 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "filler.h"
-#include "ft_getline.h"
-#include "libft.h"
+#include "libft/include/ft_getline.h"
+#include "libft/include/libft.h"
 
 static void	parse_token(t_token *token)
 {
