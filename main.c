@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:42:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/18 20:45:31 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 13:18:20 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 #include "ft_getline.h"
 #include "libft.h"
 #include "filler.h"
-
-//
-#include <fcntl.h>
 
 static void	die(t_map *map)
 {
@@ -68,9 +65,6 @@ int		main(void)
 	t_map	map;
 	char	*str;
 
-	//
-	open("test", O_RDONLY);
-	//
 	parse_player(&map);
 	while (ft_getline(STDIN_FILENO, &str) > 0)
 	{
@@ -79,28 +73,8 @@ int		main(void)
 		map.crop_token(&map.token);
 		map.set_coordinates(&map);
 		map.die(&map);
-		ft_printf("%d %d\n", map.finish_y, map.finish_x);
+		ft_printf("%d %d\n", map.finish_y - map.token.shape_y, \
+			map.finish_x - map.token.shape_x);
 	}
 	return (0);
 }
-
-// $$$ exec p1 : [resources/players/ypikul.filler]
-// Plateau 15 17:
-//     01234567890123456
-// 000 .................
-// 001 .................
-// 002 .................
-// 003 .................
-// 004 .................
-// 005 .................
-// 006 .................
-// 007 .................
-// 008 ..O..............
-// 009 .................
-// 010 .................
-// 011 .................
-// 012 ..............X..
-// 013 .................
-// 014 .................
-// Piece 1 3:
-// .**

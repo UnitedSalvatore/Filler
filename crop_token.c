@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 17:24:04 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/18 20:25:16 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 13:15:36 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,26 @@
 static void	crop_x_l(t_token *token)
 {
 	int		i;
-	char	*str;
 	int		count;
 	char	**map;
-	int		j;
 
-	count = token->size_x - 1;
+	count = 0;
 	map = token->map;
 	while (*map)
 	{
 		i = 0;
-		str = *map;
-		while (str[i])
+		while ((*map)[i])
 		{
-			if (str[i] == PLAYER_1 || str[i] == PLAYER_2)
-				j = i;
+			if ((*map)[i] == '*' && i > count)
+				count = i;
 			++i;
 		}
-		if (j < count)
-			count = i;
 		++map;
 	}
 	map = token->map;
 	while (*map)
 	{
-		*(*map + count) = '\0';
+		*(*map + count + 1) = '\0';
 		++map;
 	}
 }
@@ -50,7 +45,6 @@ static void	crop_x_l(t_token *token)
 static void	crop_x_f(t_token *token)
 {
 	int		i;
-	char	*str;
 	int		count;
 	char	**map;
 
@@ -59,8 +53,7 @@ static void	crop_x_f(t_token *token)
 	while (*map)
 	{
 		i = 0;
-		str = *map;
-		while (str[i] == '.')
+		while ((*map)[i] == '.')
 			++i;
 		if (i < count)
 			count = i;
@@ -82,34 +75,37 @@ static int	find_shape(char *str)
 	return (0);
 }
 
-static void crop_y(t_token *token, const char c)
+static void	crop_y(t_token *token)
 {
 	char	**map;
 
-	if (c == 'f')
-		while (*token->map && !find_shape(*token->map))
-			++token->map;
-	else if (c == 'l')
-	{
-		map = token->map;
-		while (*token->map && find_shape(*token->map))
-			++token->map;
-		*token->map = NULL;
-		token->map = map;
-	} 
+	map = token->map;
+	while (*map && !find_shape(*map))
+		++map;
+	while (*map && find_shape(*map))
+		++map;
+	*map = NULL;
 }
 
 void		crop_token(t_token *token)
 {
-	int i;
+	int		i;
 
-	crop_y(token, 'f');
-	crop_y(token, 'l');
-	crop_x_f(token);
+	crop_y(token);
 	crop_x_l(token);
-	token->size_x = ft_strlen(*token->map);
 	i = 0;
-	while ((token->map)[i])
+	while (token->map[i])
 		++i;
-	token-> size_y = i;
+	token->size_x = ft_strlen(*token->map);
+	token->size_y = i;
+	while (*token->map && !find_shape(*token->map))
+		++token->map;
+	i = 0;
+	while (token->map[i])
+		++i;
+	crop_x_f(token);
+	token->shape_x = token->size_x - ft_strlen(*token->map);
+	token->shape_y = token->size_y - i;
+	token->size_y -= token->shape_y;
+	token->size_x -= token->shape_x;
 }

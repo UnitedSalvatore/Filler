@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:02:18 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/18 19:37:21 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/19 16:02:05 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ struct				s_token
 	char			**kostul;
 	int				size_x;
 	int				size_y;
+	int				shape_x;
+	int				shape_y;
 };
 
 struct				s_map
