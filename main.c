@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:42:51 by ypikul            #+#    #+#             */
-/*   Updated: 2018/03/20 13:18:20 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/03/20 20:28:26 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	parse_player(t_map *map)
 	map->die = die;
 }
 
-int		main(void)
+int			main(void)
 {
 	t_map	map;
 	char	*str;
